@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML</title>
+    <style>
+      .container {
+           display: inline;
+           align-items: center;
+           gap: 10px;
+           
+       }
+
+       .container label {
+           margin-right: 10px;
+           display: inline;
+       }
+</style>
+  </head>
+  <body>
+    <div class="container">
+      <label for="termsCheckbox">Program 1: Tick the checkbox below to agree to the terms:</label>
+    <br>
+    <input type="checkbox" id="termsCheckbox">I agree to the terms and conditions</input>
+    <p id="termsResult"></p>
+
+
+      <label>Program 2: Select multiple food allergies:</label>
+      <label><input type="checkbox" name="allergies" value="Dairy">Dairy</label>
+      <label><input type="checkbox" name="allergies" value="Nuts">Nuts</label>
+      <label><input type="checkbox" name="allergies" value="Gluten">Gluten</label>
+      
+      <button onclick="displaySelectedAllergies()">Display Selected Food Allergies</button>
+      <p id="allergiesResult"></p>
+
+
+      <label>Program 3: Select multiple vacation destinations:</label>
+      <label><input type="checkbox" name="destinations" value="Paris">Paris</label>
+      <label><input type="checkbox" name="destinations" value="New York">New York</label>
+      <label><input type="checkbox" name="destinations" value="Tokyo">Tokyo</label>
+      
+      <button onclick="displaySelectedDestinations()">Display Selected Travel Destinations</button>
+      <p id="destinationsResult"></p>
+ 
+
+       <label>Program 4: Select multiple sport:</label>
+        <label><input type="checkbox" name="sports" value="Soccer"> Soccer</label>
+        <label><input type="checkbox" name="sports" value="Basketball"> Basketball</label>
+        <label><input type="checkbox" name="sports" value="Tennis"> Tennis</label>
+        
+        <button onclick="displaySelectedSports()">Display Selected Sports</button>
+        <p id="sportResult"></p>
+
+
+     <label> Program 5: Choose multiple clothing colors:</label>
+      <label><input type="checkbox" name="colors" value="Black">Black</label>
+     <label><input type="checkbox" name="colors" value="White">White</label>
+      <label><input type="checkbox" name="colors" value="Blue">Blue</label>
+  
+    <button onclick="displaySelectedColors()">Display Selected Clothing Colors</button>
+    <p id="colorsResult"></p>
+
+
+     <label>Program 6: Choose multiple social media platforms:</label>
+     <label><input type="checkbox" name="platforms" value="Facebook">Facebook</label>
+      <label><input type="checkbox" name="platforms" value="Twitter">Twitter</label>
+     <label><input type="checkbox" name="platforms" value="Instagram">Instagram</label>
+
+    <button onclick="displaySelectedPlatforms()">Display Selected Social Media Platforms</button>
+    <p id="platformsResult"></p>
+</div>
+
+<script>
+
+const termsCheckbox = document.getElementById("termsCheckbox")
+const termsResult = document.getElementById("termsResult")
+
+termsCheckbox.addEventListener("change",function(){
+
+  if (termsCheckbox.checked){
+    termsResult.textContent = "User agreed to Terms"
+  }else{
+    termsResult.textContent = ''
+  }
+ 
+})
+
+    function displaySelectedAllergies() {
+            const checkboxes = document.querySelectorAll('input[name="allergies"]:checked');
+            let selectedAllergies = [];
+            checkboxes.forEach((checkbox) => {
+                selectedAllergies.push(checkbox.value);
+            });
+
+            const allergiesResultDiv = document.getElementById('allergiesResult');
+            if (selectedAllergies.length > 0) {
+              allergiesResultDiv.innerHTML = "Selected Food Allergies: " + selectedAllergies.join(", ");
+            } else {
+              allergiesResultDiv.innerHTML = "Please select at least one food allergy";
+            }
+          }
+
+
+         function displaySelectedDestinations() {
+          const checkboxes = document.querySelectorAll('input[name="destinations"]:checked');
+          let selectedDestinations = [];
+          checkboxes.forEach((checkbox) => {
+              selectedDestinations.push(checkbox.value);
+          });
+
+          const destinationsResultDiv = document.getElementById('destinationsResult');
+          if (selectedDestinations.length > 0) {
+            destinationsResultDiv.innerHTML = "Selected Destinations: " + selectedDestinations.join(", ");
+          } else {
+            destinationsResultDiv.innerHTML = "Please select at least one destination.";
+          }
+      }
+
+
+
+      function displaySelectedSports() {
+          const checkboxes = document.querySelectorAll('input[name="sports"]:checked');
+          let selectedSports = [];
+          checkboxes.forEach((checkbox) => {
+              selectedSports.push(checkbox.value);
+          });
+
+          const sportResultDiv = document.getElementById('sportResult');
+          if (selectedSports.length > 0) {
+            sportResultDiv.innerHTML = "Selected Sports: " + selectedSports.join(", ");
+          } else {
+            sportResultDiv.innerHTML = "Please select at least one sport.";
+          }
+      }
+
+
+      function displaySelectedColors() {
+          const checkboxes = document.querySelectorAll('input[name="colors"]:checked');
+          let selectedColors = [];
+          checkboxes.forEach((checkbox) => {
+              selectedColors.push(checkbox.value);
+          });
+
+          const colorsResultDiv = document.getElementById('colorsResult');
+          if (selectedColors.length > 0) {
+            colorsResultDiv.innerHTML = "Selected Colors: " + selectedColors.join(", ");
+          } else {
+            colorsResultDiv.innerHTML = "Please select at least one color.";
+          }
+      }
+
+
+      function displaySelectedPlatforms() {
+          const checkboxes = document.querySelectorAll('input[name="platforms"]:checked');
+          let selectedPlatforms = [];
+          checkboxes.forEach((checkbox) => {
+              selectedPlatforms.push(checkbox.value);
+          });
+
+          const platformsResultDiv = document.getElementById('platformsResult');
+          if (selectedPlatforms.length > 0) {
+            platformsResultDiv.innerHTML = "Selected Platforms: " + selectedPlatforms.join(", ");
+          } else {
+            platformsResultDiv.innerHTML = "Please select at least one media platforms.";
+          }
+      }
+
+ </script>
+</body>
+</html>
